@@ -82,5 +82,13 @@ SELECT if (( select SUM(horas) FROM horas_trabajadas WHERE  id_project = 1 AND i
 
 SELECT if (( select SUM(horas) FROM horas_trabajadas WHERE  id_project = 1 AND id_rol = 4 and mes= 11 GROUP BY id_project) = 40 , "Liquidacion mensual del proyecto proyecto1 en el mes 11 del rol Administrador estan bien liquidadas","Algo anda Mal!" ) AS Resultado;
 
+-- Probar update horas_trabajadas
+
 UPDATE horas_trabajadas SET horas= 11 WHERE  leg_par=1001 and id_rol=1 and id_project =1 and mes=11;
 UPDATE horas_trabajadas SET horas= 9 WHERE  leg_par=1001 and id_rol=2 and id_project =2 and mes=12;
+UPDATE horas_trabajadas SET horas= 11 WHERE  leg_par=1001 and id_rol=2 and id_project =2 and mes=12;
+
+--- Prueba Borrado Logico
+
+call delete_logico(10);
+call delete_logico(11);

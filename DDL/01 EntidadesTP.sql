@@ -72,6 +72,7 @@ CREATE TABLE asignaciones (
 -- Creacion Entidad Horas Trabajadas
 
 CREATE TABLE horas_trabajadas (
+	id INT AUTO_INCREMENT PRIMARY KEY,
 	leg_par INT NOT NULL,
 	horas INT NOT NULL,
 	id_rol INT NOT NULL,
