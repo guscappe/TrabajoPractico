@@ -9,7 +9,7 @@ DROP table IF EXISTS proyecto;
 DROP table IF EXISTS participante;
 DROP table IF EXISTS cliente;
 DROP table IF EXISTS roles;
-DROP table IF EXISTS aud_mod;
+DROP table IF EXISTS aud_modif_horas_trabajadas;
 
 -- Creacion Entidad Participante
 
@@ -44,7 +44,7 @@ CREATE TABLE proyecto (
 
 CREATE TABLE roles (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	descripcion VARCHAR(50)
+	descripcion VARCHAR(50) NOT NULL
 );
 
 -- Creacion Entidad Asignaciones
@@ -70,6 +70,7 @@ CREATE TABLE asignaciones (
 );
 
 -- Creacion Entidad Horas Trabajadas
+-- FK con participante,proyecto,roles
 
 CREATE TABLE horas_trabajadas (
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -94,8 +95,10 @@ CREATE TABLE horas_trabajadas (
 );
 
 -- Creacion Entidad Liquidacion Mensual
+-- FK con proyecto
 
 CREATE TABLE liq_mensual(
+	id INT AUTO_INCREMENT PRIMARY KEY,
 	mes INT NOT NULL,
 	id_project INT NOT NULL,
 	anio INT NOT NULL,
@@ -110,6 +113,8 @@ CREATE TABLE liq_mensual(
 
 );
 
+-- Creacion Entidad Auditoria modificacion horas trabajadas
+
 CREATE TABLE aud_modif_horas_trabajadas(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	horas_old INT,
@@ -118,15 +123,6 @@ CREATE TABLE aud_modif_horas_trabajadas(
 	usuario VARCHAR(50),
 	id_rol INT,
 	project INT,
-	dia DATE,
-	dif int
+	id_mod INT,
+	dia DATE
 );
-
-
-
-
-
-
-
-
-

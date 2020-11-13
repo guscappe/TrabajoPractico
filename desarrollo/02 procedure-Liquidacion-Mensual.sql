@@ -16,7 +16,7 @@ BEGIN
 	DECLARE done INT DEFAULT 0;
 	DECLARE hora
 	CURSOR FOR 
-		SELECT horas,id_rol,id_project FROM horas_trabajadas where mes=mes_liq AND id_project=project;
+		SELECT horas,id_rol,id_project FROM horas_trabajadas where mes=mes_liq AND id_project=project AND borrado=0;
 	DECLARE continue handler FOR NOT FOUND SET done = true;
 	OPEN hora;
 	mi_ciclo:loop
@@ -25,15 +25,13 @@ BEGIN
 		if done then
 			leave mi_ciclo;
 		end if;
-		if idrol=1 then 
-			set ProjManager=ProjManager+hs;
-		ELSEIF idrol=2 then 
-			set des=des+hs;
-		ELSEIF idrol=3 then 
-			set tester=tester+hs;
-		ELSEIF idrol=4 then 
-			set admin=admin+hs;
-		END if;
+
+		case idrol
+			when 1 then set ProjManager=ProjManager+hs;
+			when 2 then set des=des+hs;
+			when 3 then set tester=tester+hs;
+			when 4 then set admin=admin+hs;
+		END case;
 	END loop mi_ciclo;
 	close hora;
 	INSERT INTO liq_mensual (mes, id_project,anio, hs_ProjectManager, hs_Desarrollador, hs_Tester , hs_Administrador)

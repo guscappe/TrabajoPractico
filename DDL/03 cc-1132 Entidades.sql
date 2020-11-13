@@ -1,2 +1,2 @@
 ALTER TABLE horas_trabajadas 
-	ADD borrado boolean;
+	ADD borrado INT DEFAULT 0 ;

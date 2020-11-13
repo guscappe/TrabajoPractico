@@ -1,10 +1,10 @@
 ---   Store PROCEDURE rendicion hora -----
 
-DROP PROCEDURE IF EXISTS ingreso_horas;
+DROP PROCEDURE IF EXISTS RendicionDeHoras;
 
 delimiter $$
 
-CREATE PROCEDURE ingreso_horas( in leg_par int,in id_rol INT,in id_project int,in mes int,in tipo_carga CHAR(1), in horas INT )
+CREATE PROCEDURE RendicionDeHoras( in leg_par int,in id_rol INT,in id_project int,in mes int,in tipo_carga CHAR(1), in horas INT )
 BEGIN
 
 	if tipo_carga="d" then
