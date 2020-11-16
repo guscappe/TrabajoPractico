@@ -108,6 +108,8 @@ SELECT if (( select SUM(horas) FROM horas_trabajadas WHERE  id_project = 1 AND i
 
 -- Probar update horas_trabajadas
 
+SELECT * FROM horas_trabajadas;
+
 CALL UpdateHora(1,10);
 CALL UpdateHora(6,9);
 CALL UpdateHora(12,11);

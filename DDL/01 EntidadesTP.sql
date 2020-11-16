@@ -93,25 +93,30 @@ CREATE TABLE horas_trabajadas (
 	FOREIGN KEY (id_project)
 	REFERENCES proyecto(id)
 );
-
--- Creacion Entidad Liquidacion Mensual
--- FK con proyecto
+/*
+   Creacion Entidad Liquidacion Mensual
+   FK con proyecto
+*/
 
 CREATE TABLE liq_mensual(
 	id INT AUTO_INCREMENT PRIMARY KEY,
+	horas INT,
+	id_rol INT NOT NULL,
 	mes INT NOT NULL,
 	id_project INT NOT NULL,
 	anio INT NOT NULL,
-	hs_ProjectManager INT,
-	hs_Desarrollador int,
-	hs_Tester int,
- 	hs_Administrador int,
- 	
+	
 	CONSTRAINT fk_id_proyec
 	FOREIGN KEY (id_project)
-	REFERENCES proyecto(id)
+	REFERENCES proyecto(id),
+
+	CONSTRAINT fk_idrol
+	FOREIGN KEY (id_rol)
+	REFERENCES roles(id)
 
 );
+
+
 
 -- Creacion Entidad Auditoria modificacion horas trabajadas
 
