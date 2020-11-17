@@ -1,4 +1,4 @@
----   Store PROCEDURE rendicion hora -----
+/*   Store PROCEDURE rendicion hora */
 
 DROP PROCEDURE IF EXISTS RendicionDeHoras;
 
